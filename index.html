@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Expense Tracker</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class="container">
+    <div class="summary">
+      <div class="summary-item">
+        <div id="todayDate"></div>
+        <span id="todayTotal" onclick="showTodaysExpenses()">$0.00</span>
+      </div>
+      <div class="summary-item">
+        <div id="currentMonth"></div>
+        <span id="monthTotal">$0.00</span>
+      </div>
+    </div>
+    <div class="date-navigation">
+      <button onclick="changeDate(-1)">&lt;</button>
+      <div style="display: flex; align-items: center;">
+        <input type="date" id="expenseDate">
+        <span class="day-of-week" id="dayOfWeek"></span>
+      </div>
+      <button onclick="changeDate(1)">&gt;</button>
+    </div>
+
+    <div class="display">
+      <input type="text" id="amount" readonly value="0">
+    </div>
+
+    <div class="numpad">
+      <button onclick="appendNumber(7)">7</button>
+      <button onclick="appendNumber(8)">8</button>
+      <button onclick="appendNumber(9)">9</button>
+      <button onclick="appendNumber(4)">4</button>
+      <button onclick="appendNumber(5)">5</button>
+      <button onclick="appendNumber(6)">6</button>
+      <button onclick="appendNumber(1)">1</button>
+      <button onclick="appendNumber(2)">2</button>
+      <button onclick="appendNumber(3)">3</button>
+      <button onclick="appendNumber(0)">0</button>
+      <button onclick="appendDecimal()">.</button>
+      <button onclick="clearAmount()">C</button>
+    </div>
+
+    <div class="categories">
+      <button onclick="selectCategory('Food')">Food</button>
+      <button onclick="selectCategory('Transport')">Transport</button>
+      <button onclick="selectCategory('Shopping')">Shopping</button>
+      <button onclick="selectCategory('Bills')">Bills</button>
+    </div>
+
+    <div class="payment-modes">
+      <button onclick="selectPayment('Cash')">Cash</button>
+      <button onclick="selectPayment('Card')">Card</button>
+      <button onclick="selectPayment('UPI')">UPI</button>
+    </div>
+
+    <div class="description-field">
+      <input type="text" id="description" placeholder="Enter description">
+    </div>
+
+    <button class="save-btn" onclick="saveExpense()">Save Expense</button>
+
+    <div class="expenses-list hidden">
+      <h2>Records</h2>
+      <div class="filters">
+        <select id="categoryFilter">
+          <option value="">All Categories</option>
+          <option value="Food">Food</option>
+          <option value="Transport">Transport</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Bills">Bills</option>
+        </select>
+        <select id="paymentFilter">
+          <option value="">All Payment Modes</option>
+          <option value="Cash">Cash</option>
+          <option value="Card">Card</option>
+          <option value="UPI">UPI</option>
+        </select>
+        <select id="sortBy">
+          <option value="date">Sort by Date</option>
+          <option value="amount">Sort by Amount</option>
+          <option value="category">Sort by Category</option>
+          <option value="payment">Sort by Payment</option>
+        </select>
+        <select id="sortOrder">
+          <option value="desc">Descending</option>
+          <option value="asc">Ascending</option>
+        </select>
+      </div>
+      <ul id="expensesList"></ul>
+    </div>
+
+    <button id="showRecordsBtn" onclick="toggleRecords()">Show Records</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
