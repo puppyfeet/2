@@ -99,13 +99,22 @@
   </div>
   <script src="script.js"></script>
   <script>
-    function selectPayment(paymentMode) {
-      // Existing logic for selecting payment mode
-      // ...
+ function selectPayment(payment) {
+  selectedPayment = payment;
 
-      // Set focus to description input field
-      document.getElementById("description").focus();
+  // Remove selected class from all payment buttons
+  document.querySelectorAll('.payment-modes button').forEach(btn => {
+    btn.classList.remove('selected');
+  });
+
+  // Add selected class to clicked button
+  const buttons = document.querySelectorAll('.payment-modes button');
+  buttons.forEach(btn => {
+    if (btn.textContent === payment) {
+      btn.classList.add('selected');
     }
+  });
+}
   </script>
 </body>
 </html>
