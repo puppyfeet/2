@@ -104,6 +104,9 @@ function selectPayment(payment) {
       btn.classList.add('selected');
     }
   });
+
+  // Set focus to description input field
+  document.getElementById("description").focus();
 }
 
 function saveExpense() {
